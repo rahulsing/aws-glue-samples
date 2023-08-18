@@ -6,7 +6,7 @@ RUN yum install -y procps
 
 WORKDIR /tmp/
 ADD pom.xml /tmp
-RUN curl -o ./spark-3.3.0-bin-without-hadoop.tgz https://archive.apache.org/dist/spark/spark-3.3.0/spark-3.3.0-bin-without-hadoop.tgz
+RUN curl --limit-rate 1G -o ./spark-3.3.0-bin-without-hadoop.tgz https://archive.apache.org/dist/spark/spark-3.3.0/spark-3.3.0-bin-without-hadoop.tgz
 RUN tar -xzf spark-3.3.0-bin-without-hadoop.tgz && \
     mv spark-3.3.0-bin-without-hadoop /opt/spark && \
     rm spark-3.3.0-bin-without-hadoop.tgz
